@@ -8,14 +8,31 @@
   --color-silver: #94a3b8;
   --color-white: #f8fafc;
   --color-gold: #c9a227;
-  --color-accent: #3b82f6;
-  --color-accent-hover: #2563eb;
+  --color-accent: #e2e8f0;
+  --color-accent-hover: #f8fafc;
+  --color-accent-muted: #cbd5e1;
   --color-border: #334155;
   --color-border-subtle: #1e293b;
   --background: var(--color-navy);
   --foreground: var(--color-white);
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
+
+  /* Typography scale */
+  --text-display-size: 3.5rem;
+  --text-display-line: 1.1;
+  --text-h1-size: 2.5rem;
+  --text-h1-line: 1.15;
+  --text-h2-size: 1.875rem;
+  --text-h2-line: 1.2;
+  --text-h3-size: 1.25rem;
+  --text-h3-line: 1.3;
+  --text-body-size: 1rem;
+  --text-body-line: 1.6;
+  --text-small-size: 0.875rem;
+  --text-small-line: 1.5;
+  --text-caption-size: 0.75rem;
+  --text-caption-line: 1.4;
 }
 
 @theme inline {
@@ -30,10 +47,12 @@
   --color-gold: var(--color-gold);
   --color-accent: var(--color-accent);
   --color-accent-hover: var(--color-accent-hover);
+  --color-accent-muted: var(--color-accent-muted);
   --color-border: var(--color-border);
   --color-border-subtle: var(--color-border-subtle);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius-lg);
 }
@@ -49,15 +68,28 @@
   }
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-line);
   -webkit-font-smoothing: antialiased;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-accent-muted);
   outline-offset: 2px;
 }
 
@@ -71,4 +103,122 @@ body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+/* Typography utilities */
+.text-display {
+  font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
+  font-size: clamp(2.25rem, 5vw, var(--text-display-size));
+  line-height: var(--text-display-line);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.text-h1 {
+  font-size: clamp(1.875rem, 4vw, var(--text-h1-size));
+  line-height: var(--text-h1-line);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.text-h2 {
+  font-size: var(--text-h2-size);
+  line-height: var(--text-h2-line);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.text-h3 {
+  font-size: var(--text-h3-size);
+  line-height: var(--text-h3-line);
+  font-weight: 500;
+}
+
+.text-body {
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-line);
+}
+
+.text-small {
+  font-size: var(--text-small-size);
+  line-height: var(--text-small-line);
+}
+
+.text-caption {
+  font-size: var(--text-caption-size);
+  line-height: var(--text-caption-line);
+}
+
+.text-eyebrow {
+  font-size: var(--text-small-size);
+  font-weight: 500;
+  color: var(--color-silver);
+}
+
+.motion-safe\:animate-fade-in {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: fade-in 200ms ease-out both;
+  }
+}
+
+.card-interactive {
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      transform 200ms ease-out,
+      border-color 200ms ease-out,
+      box-shadow 200ms ease-out;
+  }
+}
+
+.card-interactive:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-slate-muted);
+  box-shadow: 0 8px 24px rgba(11, 18, 32, 0.4);
+}
+
+.hero-grid-bg {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 80%);
+}
+
+.cta-gold-accent {
+  border-top: 1px solid rgba(201, 162, 39, 0.25);
+}
+
+.content-prose h2 {
+  font-size: var(--text-h2-size);
+  line-height: var(--text-h2-line);
+  font-weight: 600;
+  color: var(--foreground);
+  margin-top: 2rem;
+}
+
+.content-prose h2:first-child {
+  margin-top: 0;
+}
+
+.content-prose p {
+  margin-top: 1rem;
+  color: var(--color-silver);
+  line-height: var(--text-body-line);
+}
+
+.content-prose ul {
+  margin-top: 1rem;
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  color: var(--color-silver);
+}
+
+.content-prose li {
+  margin-top: 0.5rem;
+  line-height: var(--text-body-line);
+}
+
+.content-prose strong {
+  color: var(--foreground);
+  font-weight: 600;
 }

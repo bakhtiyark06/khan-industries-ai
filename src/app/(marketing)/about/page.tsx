@@ -17,6 +17,7 @@ export default function AboutPage() {
   return (
     <>
       <Hero
+        variant="interior"
         eyebrow="About"
         title="A technology company built on quality and honesty"
         description="Khan Industries exists to build intelligent technology that helps businesses and people operate better — with premium execution and transparent positioning."
@@ -25,15 +26,15 @@ export default function AboutPage() {
 
       <Section>
         <Container size="narrow">
-          <div className="prose prose-invert max-w-none space-y-6 text-silver">
-            <h2 className="text-2xl font-semibold text-foreground">Our mission</h2>
+          <div className="content-prose">
+            <h2>Our mission</h2>
             <p>
               To empower businesses and people through practical, reliable, and
               premium technology that saves time, improves operations, and
               creates long-term value.
             </p>
 
-            <h2 className="text-2xl font-semibold text-foreground">Who we are today</h2>
+            <h2>Who we are today</h2>
             <p>
               Khan Industries is an early-stage technology company founded by
               Bakhtiyar Khan. We focus on AI agents, business automation, modern
@@ -42,27 +43,36 @@ export default function AboutPage() {
               real execution.
             </p>
 
-            <h2 className="text-2xl font-semibold text-foreground">Our values</h2>
-            <ul className="list-disc space-y-2 pl-5">
+            <h2>Built to our own standards</h2>
+            <p>
+              This website is part of how we practice what we recommend — dark-first
+              design, honest positioning, accessible forms, and architecture built
+              to scale. We do not claim a portfolio of client work we have not
+              delivered; we show our craft through the quality of what you are
+              using right now.
+            </p>
+
+            <h2>Our values</h2>
+            <ul>
               <li>
-                <strong className="text-foreground">Quality</strong> — we build
-                with care, precision, and long-term reliability.
+                <strong>Quality</strong> — we build with care, precision, and
+                long-term reliability.
               </li>
               <li>
-                <strong className="text-foreground">Integrity</strong> — we do
-                not fake clients, testimonials, or results.
+                <strong>Integrity</strong> — we do not fake clients,
+                testimonials, or results.
               </li>
               <li>
-                <strong className="text-foreground">Innovation</strong> — we use
-                technology to solve real problems.
+                <strong>Innovation</strong> — we use technology to solve real
+                problems.
               </li>
               <li>
-                <strong className="text-foreground">Premium execution</strong> —
-                every product and system should feel polished and valuable.
+                <strong>Premium execution</strong> — every product and system
+                should feel polished and valuable.
               </li>
             </ul>
 
-            <h2 className="text-2xl font-semibold text-foreground">Long-term direction</h2>
+            <h2>Long-term direction</h2>
             <p>
               We aim to grow into a diversified technology company — AI
               platforms, SaaS products, client solutions, and eventually

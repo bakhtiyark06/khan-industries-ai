@@ -12,14 +12,20 @@ export const metadata = buildPageMetadata({
   path: routes.contact,
 });
 
-export default function ContactPage() {
+interface ContactPageProps {
+  searchParams: Promise<{ interest?: string }>;
+}
+
+export default async function ContactPage({ searchParams }: ContactPageProps) {
+  const { interest } = await searchParams;
+
   return (
     <>
       <Hero
+        variant="compact"
         eyebrow="Contact"
         title="Request a consultation"
         description="Share your goals and constraints. We will listen first, then recommend an approach that fits — or tell you honestly if we are not the right fit."
-        primaryCta={{ label: "Scroll to form", href: "#contact-form" }}
       />
 
       <Section id="contact-form" aria-labelledby="form-heading">
@@ -27,7 +33,10 @@ export default function ContactPage() {
           <h2 id="form-heading" className="sr-only">
             Consultation request form
           </h2>
-          <ContactForm sourcePage={routes.contact} />
+          <ContactForm
+            defaultInterest={interest}
+            sourcePage={routes.contact}
+          />
         </Container>
       </Section>
     </>

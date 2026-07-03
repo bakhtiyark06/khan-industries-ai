@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { Logo } from "@/components/brand/Logo";
 import { footerNav } from "@/config/navigation";
-import { routes } from "@/config/routes";
+import { contactConfig } from "@/config/contact";
 import { siteConfig } from "@/config/site";
 import { socialLinks } from "@/config/social";
 import { Container } from "./Container";
@@ -13,16 +14,17 @@ export function Footer() {
       <Container>
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-1">
-            <Link
-              href={routes.home}
-              className="text-lg font-semibold text-foreground"
-            >
-              {siteConfig.name}
-            </Link>
-            <p className="mt-3 text-sm text-silver leading-relaxed">
+            <Logo size="lg" />
+            <p className="mt-3 text-small leading-relaxed text-silver">
               Intelligent technology for businesses that value quality,
               honesty, and long-term partnership.
             </p>
+            <a
+              href={`mailto:${contactConfig.email}`}
+              className="mt-4 inline-block text-small text-silver hover:text-foreground"
+            >
+              {contactConfig.email}
+            </a>
           </div>
 
           <div>
@@ -34,12 +36,17 @@ export function Footer() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="text-sm text-silver hover:text-foreground"
+                      className="text-small text-silver hover:text-foreground"
                     >
                       {item.label}
                     </Link>
                   </li>
                 ))}
+              <li>
+                <span className="text-small text-silver/70">
+                  Insights — coming soon
+                </span>
+              </li>
             </ul>
           </div>
 
@@ -50,7 +57,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-silver hover:text-foreground"
+                    className="text-small text-silver hover:text-foreground"
                   >
                     {item.label}
                   </Link>
@@ -66,7 +73,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-silver hover:text-foreground"
+                    className="text-small text-silver hover:text-foreground"
                   >
                     {item.label}
                   </Link>
@@ -77,12 +84,18 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col gap-4 border-t border-border-subtle pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-silver">
-            © {year} {siteConfig.legalName}. All rights reserved.
-          </p>
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
+            <p className="text-small text-silver">
+              © {year} {siteConfig.legalName}. All rights reserved.
+            </p>
+            <div className="flex gap-4">
+              <span className="text-small text-silver/70">Privacy — coming soon</span>
+              <span className="text-small text-silver/70">Terms — coming soon</span>
+            </div>
+          </div>
           <a
             href={socialLinks.github}
-            className="text-sm text-silver hover:text-foreground"
+            className="text-small text-silver hover:text-foreground"
             target="_blank"
             rel="noopener noreferrer"
           >

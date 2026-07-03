@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { Hero } from "@/components/marketing/Hero";
 import { CallToAction } from "@/components/marketing/CallToAction";
+import { StickyCta } from "@/components/marketing/StickyCta";
 import { Section } from "@/components/layout/Section";
 import { Container } from "@/components/layout/Container";
 import { contactCta } from "@/config/navigation";
@@ -49,9 +50,12 @@ export default async function ServiceDetailPage({
     notFound();
   }
 
+  const consultationHref = `${routes.contact}?interest=${encodeURIComponent(service.name)}`;
+
   return (
     <>
       <Hero
+        variant="interior"
         eyebrow={service.category}
         title={service.name}
         description={service.description}
@@ -62,20 +66,18 @@ export default async function ServiceDetailPage({
         <Container size="narrow">
           <div className="space-y-8 text-silver">
             <div>
-              <h2 className="text-xl font-semibold text-foreground">Purpose</h2>
-              <p className="mt-2 leading-relaxed">{service.purpose}</p>
+              <h2 className="text-h3 text-foreground">Purpose</h2>
+              <p className="mt-2 text-body leading-relaxed">{service.purpose}</p>
             </div>
             <div>
-              <h2 className="text-xl font-semibold text-foreground">
-                Ideal customer
-              </h2>
-              <p className="mt-2 leading-relaxed">{service.idealCustomer}</p>
+              <h2 className="text-h3 text-foreground">Ideal customer</h2>
+              <p className="mt-2 text-body leading-relaxed">
+                {service.idealCustomer}
+              </p>
             </div>
             <div>
-              <h2 className="text-xl font-semibold text-foreground">
-                Outcomes we target
-              </h2>
-              <ul className="mt-2 list-disc space-y-1 pl-5">
+              <h2 className="text-h3 text-foreground">Outcomes we target</h2>
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-body">
                 {service.outcomes.map((outcome) => (
                   <li key={outcome}>{outcome}</li>
                 ))}
@@ -85,14 +87,18 @@ export default async function ServiceDetailPage({
         </Container>
       </Section>
 
-      <CallToAction
-        title={`Discuss ${service.name}`}
-        description="We scope every engagement honestly — with clear deliverables, assumptions, and next steps."
-        primaryCta={{
-          ...contactCta,
-          href: `${routes.contact}?interest=${encodeURIComponent(service.name)}`,
-        }}
-      />
+      <div className="pb-20">
+        <CallToAction
+          title={`Discuss ${service.name}`}
+          description="We scope every engagement honestly — with clear deliverables, assumptions, and next steps."
+          primaryCta={{
+            ...contactCta,
+            href: consultationHref,
+          }}
+        />
+      </div>
+
+      <StickyCta label="Request consultation" href={consultationHref} />
     </>
   );
 }

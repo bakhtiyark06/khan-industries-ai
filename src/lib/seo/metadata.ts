@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { brandConfig } from "@/config/brand";
 import { seoConfig } from "@/config/seo";
 import { getSiteUrl, siteConfig } from "@/config/site";
 
@@ -34,7 +35,14 @@ export function buildPageMetadata({
       siteName: siteConfig.name,
       locale: siteConfig.locale,
       type: "website",
-      images: [{ url: imageUrl, alt: siteConfig.name }],
+      images: [
+        {
+          url: imageUrl,
+          alt: brandConfig.logoAlt,
+          width: brandConfig.logoWidth,
+          height: brandConfig.logoHeight,
+        },
+      ],
     },
     twitter: {
       card: seoConfig.twitterCard,
@@ -49,17 +57,36 @@ export function buildPageMetadata({
 }
 
 export function buildDefaultMetadata(): Metadata {
+  const baseUrl = getSiteUrl();
+  const imageUrl = `${baseUrl}${seoConfig.ogImagePath}`;
+
   return {
-    metadataBase: new URL(getSiteUrl()),
+    metadataBase: new URL(baseUrl),
     title: {
       default: siteConfig.defaultTitle,
       template: siteConfig.titleTemplate,
     },
     description: seoConfig.defaultDescription,
+    icons: {
+      icon: brandConfig.logoPath,
+      apple: brandConfig.logoPath,
+    },
     openGraph: {
       siteName: siteConfig.name,
       locale: siteConfig.locale,
       type: "website",
+      images: [
+        {
+          url: imageUrl,
+          alt: brandConfig.logoAlt,
+          width: brandConfig.logoWidth,
+          height: brandConfig.logoHeight,
+        },
+      ],
+    },
+    twitter: {
+      card: seoConfig.twitterCard,
+      images: [imageUrl],
     },
   };
 }

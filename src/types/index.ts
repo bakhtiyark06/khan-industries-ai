@@ -19,4 +19,5 @@ export interface ContactFormData {
 export interface ContactFormResult {
   success: boolean;
   message: string;
+  fieldErrors?: Record<string, string>;
 }

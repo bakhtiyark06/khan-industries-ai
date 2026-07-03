@@ -139,3 +139,20 @@ export function getAllServiceSlugs(): string[] {
 export function getFeaturedServices(): Service[] {
   return services.filter((s) => s.featured);
 }
+
+export const serviceCategoryOrder = [
+  "Intelligent Systems",
+  "Digital Presence",
+  "Business Operations",
+  "Platform & Integration",
+] as const;
+
+export function getServicesGroupedByCategory(): {
+  category: string;
+  services: Service[];
+}[] {
+  return serviceCategoryOrder.map((category) => ({
+    category,
+    services: services.filter((s) => s.category === category),
+  }));
+}

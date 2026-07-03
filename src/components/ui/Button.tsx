@@ -17,11 +17,12 @@ export interface ButtonProps {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-accent text-white hover:bg-accent-hover border border-transparent",
+    "bg-foreground text-navy hover:bg-accent-hover border border-white/20 shadow-sm",
   secondary:
-    "bg-slate text-foreground border border-border hover:bg-slate-muted",
-  ghost: "bg-transparent text-foreground hover:bg-slate border border-transparent",
-  link: "bg-transparent text-accent hover:text-accent-hover underline-offset-4 hover:underline p-0",
+    "bg-slate text-foreground border border-border hover:bg-slate-muted hover:border-slate-muted",
+  ghost:
+    "bg-transparent text-foreground hover:bg-slate border border-transparent",
+  link: "bg-transparent text-foreground hover:text-accent-muted underline-offset-4 hover:underline p-0",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -42,7 +43,7 @@ export function Button({
 }: ButtonProps) {
   const classes = cn(
     "inline-flex items-center justify-center rounded-md font-medium transition-colors motion-safe:duration-200",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-muted",
     "disabled:pointer-events-none disabled:opacity-50",
     variant !== "link" && sizeClasses[size],
     variantClasses[variant],

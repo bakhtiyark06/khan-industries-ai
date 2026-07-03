@@ -20,6 +20,7 @@ export default function ProductsPage() {
   return (
     <>
       <Hero
+        variant="interior"
         eyebrow="Products"
         title="Scalable software we are building"
         description="These are Khan Industries product concepts — not launched offerings unless explicitly marked. We label status honestly on every page."

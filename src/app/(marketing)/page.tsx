@@ -24,16 +24,19 @@ const valueFeatures = [
     title: "Save time",
     description:
       "Automation and intelligent systems that remove repetitive work so your team can focus on what matters.",
+    icon: "clock" as const,
   },
   {
     title: "Increase revenue",
     description:
       "Products and services designed to capture leads, convert interest, and support growth — honestly scoped.",
+    icon: "chart" as const,
   },
   {
     title: "Build with confidence",
     description:
       "Premium execution, clear communication, and technology you can trust for the long term.",
+    icon: "shield" as const,
   },
 ];
 
@@ -44,11 +47,17 @@ export default function HomePage() {
   return (
     <>
       <Hero
+        variant="home"
         eyebrow="Intelligent technology"
         title="Practical systems that help businesses operate better"
         description="Khan Industries builds AI agents, automation, premium websites, and software — with honest positioning, premium quality, and a long-term partnership mindset."
         primaryCta={contactCta}
         secondaryCta={{ label: "Explore products", href: routes.products }}
+        tertiaryPaths={[
+          { label: "View solutions", href: routes.solutions },
+          { label: "Explore products", href: routes.products },
+          { label: "About us", href: routes.about },
+        ]}
       />
 
       <Section aria-labelledby="values-heading">

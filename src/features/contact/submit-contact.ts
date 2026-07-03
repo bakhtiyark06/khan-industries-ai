@@ -30,6 +30,7 @@ export async function submitContact(
     return {
       success: false,
       message: firstError ?? "Please check the form and try again.",
+      fieldErrors: validation.errors,
     };
   }
 

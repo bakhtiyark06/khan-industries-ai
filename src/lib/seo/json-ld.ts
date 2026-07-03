@@ -1,3 +1,4 @@
+import { brandConfig } from "@/config/brand";
 import { getSiteUrl, siteConfig } from "@/config/site";
 
 export function buildOrganizationJsonLd() {
@@ -8,6 +9,7 @@ export function buildOrganizationJsonLd() {
     "@type": "Organization",
     name: siteConfig.name,
     url: baseUrl,
+    logo: `${baseUrl}${brandConfig.logoPath}`,
     description: siteConfig.description,
     founder: {
       "@type": "Person",

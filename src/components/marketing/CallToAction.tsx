@@ -15,14 +15,10 @@ export function CallToAction({
   secondaryCta,
 }: CallToActionProps) {
   return (
-    <section className="border-y border-border-subtle bg-navy-elevated py-16 md:py-20">
-      <Container className="text-center">
-        <h2 className="text-2xl font-semibold text-foreground md:text-3xl">
-          {title}
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-silver leading-relaxed">
-          {description}
-        </p>
+    <section className="cta-gold-accent border-y border-border-subtle bg-navy-elevated py-16 md:py-20">
+      <Container className="text-center motion-safe:animate-fade-in">
+        <h2 className="text-h2 text-foreground">{title}</h2>
+        <p className="mx-auto mt-4 max-w-2xl text-body text-silver">{description}</p>
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button href={primaryCta.href} size="lg">
             {primaryCta.label}

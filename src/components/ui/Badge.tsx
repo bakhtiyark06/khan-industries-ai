@@ -9,7 +9,7 @@ export interface BadgeProps {
 const statusStyles: Record<ProductStatus | "Offered", string> = {
   Concept: "bg-slate text-silver border-border",
   Planned: "bg-slate-muted text-silver border-border",
-  "In Development": "bg-accent/20 text-accent border-accent/30",
+  "In Development": "bg-slate-muted/50 text-foreground border-border",
   Beta: "bg-gold/20 text-gold border-gold/30",
   Launched: "bg-emerald-900/40 text-emerald-300 border-emerald-700/50",
   Offered: "bg-slate text-silver border-border",
