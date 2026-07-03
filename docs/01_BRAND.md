@@ -202,6 +202,10 @@ Used for the website, web apps, dashboards, SaaS products, and AI agent interfac
 - **Accessibility is mandatory.** All text and interactive colors must meet **WCAG 2.1 AA** contrast minimums. Accessibility outranks aesthetic preference, always.
 - **Functional color is reserved** for meaning (success, warning, error, info) and must never be used decoratively.
 
+### 7.2.1 Website Metallic Dark Extension (2026)
+
+The public marketing website may use a **Metallic Dark** expression of the digital palette — matte black (`#050505`), graphite, titanium, steel, silver, and champagne gold accents — to align with the metallic logo mark. This is a deliberate extension for brand moments, not a replacement of Deep Navy for product UIs and dashboards.
+
 ---
 
 ## 8. Typography Philosophy

@@ -29,16 +29,21 @@ export function Hero({
     <section
       className={
         isCompact
-          ? "border-b border-border-subtle py-12 md:py-16"
+          ? "border-b border-chrome/50 bg-graphite py-12 md:py-16"
           : isHome
-            ? "relative overflow-hidden border-b border-border-subtle py-20 md:py-28"
-            : "border-b border-border-subtle py-16 md:py-20"
+            ? "relative overflow-hidden border-b border-chrome/50 py-20 md:py-28"
+            : "border-b border-chrome/50 bg-void py-20 md:py-28"
       }
     >
-      {isHome && <div className="pointer-events-none absolute inset-0 hero-grid-bg" />}
+      {isHome && (
+        <>
+          <div className="pointer-events-none absolute inset-0 studio-light" />
+          <div className="pointer-events-none absolute inset-0 hero-grid-bg opacity-60" />
+        </>
+      )}
 
       <Container
-        size={isHome ? "default" : "narrow"}
+        size={isHome ? "wide" : "narrow"}
         className={isHome ? "relative" : undefined}
       >
         <div
@@ -48,15 +53,15 @@ export function Hero({
               : "text-center md:text-left"
           }
         >
-          <div className={isHome ? "motion-safe:animate-fade-in" : undefined}>
+          <div className="motion-safe:animate-reveal-up">
             {eyebrow && <p className="text-eyebrow">{eyebrow}</p>}
             <h1
               className={
                 isHome
-                  ? "text-display mt-4 text-foreground"
+                  ? "text-display-xl mt-6 text-foreground"
                   : isCompact
-                    ? "text-h1 mt-3 text-foreground"
-                    : "text-h1 mt-4 text-foreground"
+                    ? "text-display mt-3 text-foreground"
+                    : "text-display mt-6 text-foreground"
               }
             >
               {title}
@@ -95,7 +100,7 @@ export function Hero({
           </div>
 
           {isHome && (
-            <div className="motion-safe:animate-fade-in flex justify-center lg:justify-end">
+            <div className="motion-safe:animate-reveal-up flex justify-center lg:justify-end">
               <HeroVisual />
             </div>
           )}

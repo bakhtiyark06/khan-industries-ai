@@ -1,13 +1,21 @@
 import { Hero } from "@/components/marketing/Hero";
-import { SectionHeader } from "@/components/marketing/SectionHeader";
-import { ServiceCard } from "@/components/marketing/ServiceCard";
-import { CallToAction } from "@/components/marketing/CallToAction";
-import { Section } from "@/components/layout/Section";
-import { Grid } from "@/components/layout/Grid";
+import { ConsultationInvitation } from "@/components/marketing/home/ConsultationInvitation";
+import { TransformationChapter } from "@/components/marketing/TransformationChapter";
 import { contactCta } from "@/config/navigation";
 import { routes } from "@/config/routes";
 import { getServicesGroupedByCategory } from "@/content/services";
 import { buildPageMetadata } from "@/lib/seo/metadata";
+
+const categoryThesis: Record<string, string> = {
+  "Intelligent Systems":
+    "Intelligent automation that removes repetitive work and scales judgment.",
+  "Digital Presence":
+    "Premium digital presence that establishes trust and drives growth.",
+  "Business Operations":
+    "Operational systems that reduce stress and improve clarity.",
+  "Platform & Integration":
+    "Integration foundations that connect systems and enable scale.",
+};
 
 export const metadata = buildPageMetadata({
   title: "Solutions",
@@ -24,43 +32,24 @@ export default function SolutionsPage() {
       <Hero
         variant="interior"
         eyebrow="Solutions"
-        title="Custom engagements that solve real business problems"
+        title="Business transformation through technology"
         description="Services are hands-on and tailored. Products are scalable software. We keep that distinction clear so you always know what you are buying."
         primaryCta={contactCta}
         secondaryCta={{ label: "View products", href: routes.products }}
       />
 
       {grouped.map((group) => (
-        <Section
+        <TransformationChapter
           key={group.category}
-          variant={group.category === "Digital Presence" ? "muted" : "default"}
-          aria-labelledby={`category-${group.category.replace(/\s+/g, "-").toLowerCase()}`}
-        >
-          <SectionHeader
-            id={`category-${group.category.replace(/\s+/g, "-").toLowerCase()}`}
-            title={group.category}
-            description={
-              group.category === "Intelligent Systems"
-                ? "AI agents, chatbots, and consulting for intelligent automation."
-                : group.category === "Digital Presence"
-                  ? "Premium web experiences that establish trust and drive growth."
-                  : group.category === "Business Operations"
-                    ? "Workflow automation, email systems, and operational visibility."
-                    : "APIs, cloud infrastructure, and integration foundations."
-            }
-          />
-          <Grid cols={3}>
-            {group.services.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
-            ))}
-          </Grid>
-        </Section>
+          category={group.category}
+          thesis={categoryThesis[group.category] ?? group.category}
+          services={group.services}
+        />
       ))}
 
-      <CallToAction
+      <ConsultationInvitation
         title="Not sure which service fits?"
         description="Book a consultation. We will map your goals to the right engagement shape — Starter through Enterprise scope."
-        primaryCta={contactCta}
       />
     </>
   );

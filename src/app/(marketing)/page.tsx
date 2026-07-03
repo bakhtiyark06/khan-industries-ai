@@ -1,16 +1,15 @@
-import { Hero } from "@/components/marketing/Hero";
-import { SectionHeader } from "@/components/marketing/SectionHeader";
-import { FeatureGrid } from "@/components/marketing/FeatureGrid";
-import { ProductCard } from "@/components/marketing/ProductCard";
-import { ServiceCard } from "@/components/marketing/ServiceCard";
-import { CallToAction } from "@/components/marketing/CallToAction";
-import { Section } from "@/components/layout/Section";
-import { Grid } from "@/components/layout/Grid";
-import { contactCta } from "@/config/navigation";
 import { routes } from "@/config/routes";
 import { products } from "@/content/products";
 import { services } from "@/content/services";
 import { buildPageMetadata } from "@/lib/seo/metadata";
+import { CinematicHero } from "@/components/marketing/home/CinematicHero";
+import { ManifestoSection } from "@/components/marketing/home/ManifestoSection";
+import { PrinciplesStrip } from "@/components/marketing/home/PrinciplesStrip";
+import { TechnologyThesis } from "@/components/marketing/home/TechnologyThesis";
+import { TransformationPreview } from "@/components/marketing/home/TransformationPreview";
+import { ProductSpotlight } from "@/components/marketing/home/ProductSpotlight";
+import { StandardsProof } from "@/components/marketing/home/StandardsProof";
+import { ConsultationInvitation } from "@/components/marketing/home/ConsultationInvitation";
 
 export const metadata = buildPageMetadata({
   title: "Home",
@@ -41,18 +40,15 @@ const valueFeatures = [
 ];
 
 export default function HomePage() {
-  const featuredServices = services.filter((s) => s.featured).slice(0, 3);
-  const featuredProducts = products.slice(0, 3);
+  const featuredServices = services.filter((s) => s.featured).slice(0, 2);
+  const featuredProduct = products[0];
+  const otherProducts = products.slice(1, 5);
 
   return (
     <>
-      <Hero
-        variant="home"
-        eyebrow="Intelligent technology"
-        title="Practical systems that help businesses operate better"
+      <CinematicHero
+        title="Systems that operate the future"
         description="Khan Industries builds AI agents, automation, premium websites, and software — with honest positioning, premium quality, and a long-term partnership mindset."
-        primaryCta={contactCta}
-        secondaryCta={{ label: "Explore products", href: routes.products }}
         tertiaryPaths={[
           { label: "View solutions", href: routes.solutions },
           { label: "Explore products", href: routes.products },
@@ -60,49 +56,21 @@ export default function HomePage() {
         ]}
       />
 
-      <Section aria-labelledby="values-heading">
-        <SectionHeader
-          id="values-heading"
-          eyebrow="What we deliver"
-          title="Technology aligned to real business outcomes"
-          description="Every engagement maps to measurable value — not hype, not activity for its own sake."
-        />
-        <FeatureGrid features={valueFeatures} />
-      </Section>
+      <ManifestoSection statement="We build intelligent technology with the discipline of engineers and the standards of a long-term partner." />
 
-      <Section variant="muted" aria-labelledby="solutions-heading">
-        <SectionHeader
-          id="solutions-heading"
-          eyebrow="Solutions"
-          title="Custom services for your business"
-          description="Hands-on engagements — from AI agents to websites and automation — tailored to your goals."
-        />
-        <Grid cols={3}>
-          {featuredServices.map((service) => (
-            <ServiceCard key={service.slug} service={service} />
-          ))}
-        </Grid>
-      </Section>
+      <PrinciplesStrip principles={valueFeatures} />
 
-      <Section aria-labelledby="products-heading">
-        <SectionHeader
-          id="products-heading"
-          eyebrow="Products"
-          title="Scalable software in development"
-          description="Our product concepts are in active development. Every page shows honest status — we never imply traction we do not have."
-        />
-        <Grid cols={3}>
-          {featuredProducts.map((product) => (
-            <ProductCard key={product.slug} product={product} />
-          ))}
-        </Grid>
-      </Section>
+      <TechnologyThesis />
 
-      <CallToAction
+      <TransformationPreview services={featuredServices} />
+
+      <ProductSpotlight featured={featuredProduct} others={otherProducts} />
+
+      <StandardsProof />
+
+      <ConsultationInvitation
         title="Ready to discuss your project?"
         description="Book a consultation. We will listen first, recommend honestly, and scope work you can trust."
-        primaryCta={contactCta}
-        secondaryCta={{ label: "View all solutions", href: routes.solutions }}
       />
     </>
   );

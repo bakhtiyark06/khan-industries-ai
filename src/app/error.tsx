@@ -11,15 +11,16 @@ export default function Error({
   reset: () => void;
 }) {
   return (
-    <div className="flex flex-1 items-center py-24">
+    <div className="flex flex-1 items-center bg-void py-24">
       <Container className="text-center">
-        <h1 className="text-3xl font-semibold text-foreground">
+        <p className="text-eyebrow">Error</p>
+        <h1 className="text-display mt-4 text-foreground">
           Something went wrong
         </h1>
-        <p className="mt-4 text-silver">
+        <p className="mt-4 text-body text-silver">
           We encountered an unexpected error. Please try again.
         </p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button type="button" onClick={reset}>
             Try again
           </Button>

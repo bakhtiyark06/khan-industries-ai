@@ -19,19 +19,19 @@ export default function NotFound() {
     <>
       <SkipLink />
       <Header />
-      <main id="main-content" className="flex flex-1 items-center py-24">
+      <main id="main-content" className="flex flex-1 items-center bg-void py-24">
         <Container className="text-center">
-          <CubeIllustration className="mx-auto h-16 w-16 motion-safe:animate-fade-in" />
-          <p className="mt-6 text-eyebrow">404</p>
-          <h1 className="text-h1 mt-2 text-foreground">Page not found</h1>
+          <CubeIllustration className="mx-auto h-16 w-16 motion-safe:animate-reveal-up opacity-80" />
+          <p className="mt-8 text-eyebrow">404</p>
+          <h1 className="text-display mt-4 text-foreground">Page not found</h1>
           <p className="mt-4 text-body text-silver">
             The page you requested does not exist or may have moved.
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button href={routes.home}>Go home</Button>
             <Link
               href={routes.contact}
-              className="text-small font-medium text-foreground hover:text-accent-muted"
+              className="text-small text-champagne hover:text-foreground"
             >
               Contact us
             </Link>

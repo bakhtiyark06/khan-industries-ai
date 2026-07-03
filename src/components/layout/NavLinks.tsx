@@ -36,7 +36,7 @@ export function NavLinks({
               linkClassName,
               active && "text-foreground",
               active &&
-                "underline decoration-accent-muted underline-offset-4",
+                "underline decoration-champagne decoration-2 underline-offset-4",
             )}
             onClick={onNavigate}
           >

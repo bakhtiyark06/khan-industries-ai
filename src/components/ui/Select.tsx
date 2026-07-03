@@ -9,8 +9,9 @@ export function Select({ className, error, children, ...props }: SelectProps) {
   return (
     <select
       className={cn(
-        "flex h-11 w-full rounded-md border border-border bg-navy-elevated px-3 py-2 text-sm text-foreground",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-muted",
+        "flex h-11 w-full rounded-lg border border-chrome bg-steel px-3 py-2 text-sm text-foreground",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-champagne",
+        "shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]",
         error && "border-red-500",
         className,
       )}

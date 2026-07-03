@@ -16,7 +16,7 @@ export function Card({
   return (
     <Component
       className={cn(
-        "rounded-lg border border-border bg-navy-elevated p-6",
+        "rounded-xl surface-plate p-6",
         interactive && "card-interactive",
         !interactive && "motion-safe:transition-colors motion-safe:duration-200",
         className,

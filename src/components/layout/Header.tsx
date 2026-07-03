@@ -11,9 +11,19 @@ import { Container } from "./Container";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const enabledNav = headerNav.filter((item) => item.enabled);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 8);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -63,9 +73,19 @@ export function Header() {
   }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border-subtle bg-navy/95 backdrop-blur-sm">
-      <Container>
-        <div className="flex h-16 items-center justify-between gap-4">
+    <header
+      className={cn(
+        "sticky top-0 z-40 surface-glass transition-all motion-safe:duration-200",
+        scrolled && "border-chrome",
+      )}
+    >
+      <Container size="wide">
+        <div
+          className={cn(
+            "flex items-center justify-between gap-4 transition-all motion-safe:duration-200",
+            scrolled ? "h-16" : "h-[4.5rem] py-1",
+          )}
+        >
           <Logo priority onClick={() => setMenuOpen(false)} />
 
           <nav
@@ -90,7 +110,7 @@ export function Header() {
             <button
               ref={menuButtonRef}
               type="button"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border text-foreground md:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-chrome text-foreground md:hidden"
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -131,7 +151,7 @@ export function Header() {
         id="mobile-nav"
         ref={menuRef}
         className={cn(
-          "fixed inset-0 top-16 z-30 bg-navy motion-safe:transition-opacity md:hidden",
+          "fixed inset-0 top-16 z-30 bg-void motion-safe:transition-opacity md:hidden",
           menuOpen ? "block opacity-100" : "hidden opacity-0",
         )}
         role="dialog"
@@ -141,12 +161,12 @@ export function Header() {
         <Container className="flex flex-col gap-2 py-6">
           <NavLinks
             items={enabledNav}
-            linkClassName="rounded-md px-3 py-3 text-base text-foreground hover:bg-slate min-h-[44px] flex items-center"
+            linkClassName="rounded-lg px-3 py-3 text-base text-foreground hover:bg-steel min-h-[44px] flex items-center"
             onNavigate={() => setMenuOpen(false)}
           />
           <Link
             href={contactCta.href}
-            className="mt-4 inline-flex h-11 w-full items-center justify-center rounded-md bg-foreground px-5 text-sm font-medium text-navy hover:bg-accent-hover"
+            className="mt-4 inline-flex h-11 w-full items-center justify-center rounded-full bg-white px-5 text-sm font-medium text-void hover:bg-titanium-light"
             onClick={() => setMenuOpen(false)}
           >
             {contactCta.label}

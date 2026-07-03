@@ -9,8 +9,8 @@ export interface StickyCtaProps {
 
 export function StickyCta({ label, href }: StickyCtaProps) {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-30 border-t border-border-subtle bg-navy/95 backdrop-blur-sm px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
-      <div className="mx-auto flex max-w-7xl justify-center">
+    <div className="fixed bottom-0 left-0 right-0 z-30 surface-glass champagne-accent-top px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+      <div className="mx-auto flex max-w-[90rem] justify-center">
         <Button href={href} size="md" className="w-full max-w-md sm:w-auto">
           {label}
         </Button>

@@ -17,18 +17,18 @@ export interface ButtonProps {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-foreground text-navy hover:bg-accent-hover border border-white/20 shadow-sm",
+    "bg-white text-void hover:bg-titanium-light border border-white/20 shadow-sm",
   secondary:
-    "bg-slate text-foreground border border-border hover:bg-slate-muted hover:border-slate-muted",
+    "bg-transparent text-foreground border border-chrome hover:border-champagne/40 hover:bg-steel/50",
   ghost:
-    "bg-transparent text-foreground hover:bg-slate border border-transparent",
-  link: "bg-transparent text-foreground hover:text-accent-muted underline-offset-4 hover:underline p-0",
+    "bg-transparent text-silver hover:text-foreground border border-transparent hover:bg-steel/40",
+  link: "bg-transparent text-silver hover:text-foreground underline-offset-4 hover:underline p-0",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: "h-9 px-4 text-sm",
-  md: "h-11 px-5 text-sm",
-  lg: "h-12 px-6 text-base",
+  sm: "h-9 px-4 text-sm rounded-full",
+  md: "h-11 px-5 text-sm rounded-full",
+  lg: "h-12 px-7 text-base rounded-full",
 };
 
 export function Button({
@@ -42,8 +42,8 @@ export function Button({
   onClick,
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center rounded-md font-medium transition-colors motion-safe:duration-200",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-muted",
+    "inline-flex items-center justify-center font-medium transition-colors motion-safe:duration-200",
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-champagne",
     "disabled:pointer-events-none disabled:opacity-50",
     variant !== "link" && sizeClasses[size],
     variantClasses[variant],

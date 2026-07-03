@@ -7,19 +7,19 @@ export interface BadgeProps {
 }
 
 const statusStyles: Record<ProductStatus | "Offered", string> = {
-  Concept: "bg-slate text-silver border-border",
-  Planned: "bg-slate-muted text-silver border-border",
-  "In Development": "bg-slate-muted/50 text-foreground border-border",
-  Beta: "bg-gold/20 text-gold border-gold/30",
-  Launched: "bg-emerald-900/40 text-emerald-300 border-emerald-700/50",
-  Offered: "bg-slate text-silver border-border",
+  Concept: "border-chrome bg-steel text-silver font-mono text-[11px] tracking-wide uppercase",
+  Planned: "border-chrome bg-graphite text-silver font-mono text-[11px] tracking-wide uppercase",
+  "In Development": "border-champagne/30 bg-champagne/10 text-titanium-light font-mono text-[11px] tracking-wide uppercase",
+  Beta: "border-champagne/40 bg-champagne/15 text-champagne font-mono text-[11px] tracking-wide uppercase",
+  Launched: "border-chrome bg-steel text-titanium-light font-mono text-[11px] tracking-wide uppercase",
+  Offered: "border-chrome bg-steel text-silver font-mono text-[11px] tracking-wide uppercase",
 };
 
 export function Badge({ status, className }: BadgeProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium",
+        "inline-flex items-center rounded-full border px-2.5 py-0.5",
         statusStyles[status],
         className,
       )}
